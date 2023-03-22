@@ -15,7 +15,6 @@ Fill variables with appropriate values:
 
 Modify `sed` section 
 ```shel
-    sed -i 's/<nexus.source.url>/<nexus.dest.url>/' $repo.tmp.json ## Change url in JSON file
     sed -i 's/"blobStoreName" : "<sourceBlobName>"/"blobStoreName" : "<destBlobName>"/' $repo.tmp.json ## Change blob in JSON file
 ```
 Set permissions to run script
