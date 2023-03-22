@@ -25,8 +25,10 @@ curl -X 'GET' \
   -H 'accept: application/json' > $repo.tmp.json
 
 echo "Modify repo $repo json file"
-sed -i 's/nexus.source.url/nexus.dest.url/' $repo.tmp.json ## Change url in JSON file
+#sed -i 's/nexus.source.url/nexus.dest.url/' $repo.tmp.json ## Change url in JSON file
+sed -i 's,'"$SOURCE_URL"','"$DEST_URL"',' $repo.tmp.json ## Change url in JSON file
 sed -i 's/"blobStoreName" : "<sourceBlobName>"/"blobStoreName" : "<destBlobName>"/' $repo.tmp.json ## Change blob in JSON file
+## TODO: parse dest and source blobstores and change it automaticaly
 echo "Download Assets"
 ./download-assets.sh $repo $SOURCE_URL $SOURCE_LOGIN $SOURCE_PASS
 
